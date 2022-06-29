@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://sequencemovieplayer.antanysavage.it/sequences/schema" xmlns:tns="http://sequencemovieplayer.antanysavage.it/sequences/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="videoType">
+		<xs:attribute name="id"         type="xs:integer"/>
+		<xs:attribute name="path"       type="xs:string"/>
+		<xs:attribute name="duration"   type="xs:float"/>
+		<xs:attribute name="start"      type="xs:string"/>
+		<xs:attribute name="end"        type="xs:string"/>
+		<xs:attribute name="from"       type="xs:string"/>
+		<xs:attribute name="to"         type="xs:string"/>
+		<xs:attribute name="daysOfWeek" type="xs:string"/>
+		<xs:attribute name="remotePath" type="xs:string"/>
+		<xs:attribute name="limited"    type="xs:int"/>
+		<xs:attribute name="group"      type="xs:string" default=""/>
+		<xs:attribute name="type"       type="tns:acceptedVideoTypes"/>
+	</xs:complexType>
+	<xs:simpleType name="acceptedVideoTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Video"/>
+			<xs:enumeration value="HiddenWindow"/>
+			<xs:enumeration value="BlackWindow"/>
+			<xs:enumeration value="Watch"/>
+			<xs:enumeration value="Photo"/>	
+            <xs:enumeration value="Browser"/>		
+			<xs:enumeration value="Weather"/>
+			<xs:enumeration value="FTPVideo"/>
+			<xs:enumeration value="FTPImage"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="sequenceType">
+		<xs:sequence>
+			<xs:element ref="tns:videos"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="remotePath" type="xs:string"/>		
+	</xs:complexType>
+	<xs:complexType name="videosType">
+		<xs:sequence>
+			<xs:element ref="tns:video" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="sequence" type="tns:sequenceType"/>
+	<xs:element name="videos"   type="tns:videosType"/>
+	<xs:element name="video" type="tns:videoType"/>
+</xs:schema>

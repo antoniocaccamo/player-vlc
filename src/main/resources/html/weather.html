@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<script type="text/javascript" src="js/weather.js"></script>
+<script src="jquery.1.6.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="css/weather.css" />
+
+</head>
+
+<body>
+<div id="container">
+    <table >
+    <tbody>
+        <tr>
+            <td colspan="3" height="30%" id="city"><a href="#" onclick="javascript:refresh_weather('45.1,7.36');">Avigliana</a></td>
+        </tr>
+        <tr>
+            <td rowspan="2"> 
+                <img id="current-icon" src="img/weather/wsymbol_0001_sunny.png" /> </td>
+            <td colspan="2" class="right"><span id="current_value">15</span> °C</td>
+        </tr>
+        <tr>
+            <td id=""><span id="today_min_value">-33</span> °C</td>
+            <td id=""><span id="today_max_value">44</span> °C</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</body>
+</html>

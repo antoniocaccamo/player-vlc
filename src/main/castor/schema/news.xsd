@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://sequencemovieplayer.antanysavage.it/news/schema" xmlns:tns="http://sequencemovieplayer.antanysavage.it/news/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="tipType">
+		<xs:attribute name="id"         type="xs:integer"/>
+		<xs:attribute name="text"       type="xs:string"/>		
+		<xs:attribute name="enabled"          type="xs:boolean"/>
+	</xs:complexType>
+
+	<xs:complexType name="kindType">	     
+		<xs:sequence>		   
+			<xs:element ref="tns:tips"/>
+		</xs:sequence>				
+		<xs:attribute name="id"               type="xs:integer"/>        
+        <xs:attribute name="name"             type="xs:string"/>
+        <xs:attribute name="font"             type="xs:string"/>
+        <xs:attribute name="foregroundColor"  type="xs:string"/>
+        <xs:attribute name="backgroundColor"  type="xs:string"/>
+        <xs:attribute name="enabled"          type="xs:boolean"/>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="infosType">
+		<xs:sequence>
+			<xs:element ref="tns:kinds" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="infos" type="tns:infosType"/>
+	<xs:element name="kinds"   type="tns:kindType"/>
+	<xs:element name="tips"    type="tns:tipType"/>
+</xs:schema>

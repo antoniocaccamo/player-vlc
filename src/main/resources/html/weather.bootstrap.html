@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bootstrap weather</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<style>
+
+html, body {
+    height : 100%;
+    width  : 100%
+}
+
+.vcenter {
+    /*
+    display: inline-block;
+    vertical-align: middle;
+    float: none; */
+}
+
+.container-fluid, .col-xs-4{
+    padding : 1px;
+}
+
+.col-xs-12 {
+    padding : 4px;
+}
+
+.container-fluid, .col-xs-4{
+    padding : 1px;
+}
+
+.container-fluid > .col-xs-12:first-child {
+    margin: 0px;
+    padding : 0px;
+}
+
+.btn-group > .btn:first-child {
+    margin-right: 5px;
+}
+
+/*img {
+    width : 83%;
+}*/
+</style>
+</head>
+<body class="vcenter">
+	<div class="container-fluid">
+        <div class="row">			
+			<div class="col-xs-12  text-center">
+                <p class="bg-primary">avigliana</p>
+            </div>
+        </div>    
+		<div class="row">
+			
+			<div class="col-xs-4 col-md-4 text-center vcenter">
+                <div class="row">			
+                    <div class="col-xs-12  text-center vcenter">
+                        <img src="http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png" alt="..." class="img-rounded">
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                      <button type="button" class="btn btn-info">1</button>
+                      <button type="button" class="btn btn-primary">2</button>
+                    </div>
+                </div> 				
+			</div>
+            
+			<div class="col-xs-4 col-md-4 text-center vcenter">
+                <div class="row">			
+                    <div class="col-xs-12  text-center vcenter">
+                        <img src="http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png" alt="..." class="img-rounded">
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                      <button type="button" class="btn btn-primary">1</button>
+                      <button type="button" class="btn btn-danger">2</button>
+                    </div>
+                </div> 				
+			</div>
+            
+			<div class="col-xs-4 col-md-4 text-center vcenter">
+                <div class="row">			
+                    <div class="col-xs-12  text-center vcenter">
+                        <img src="http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png" alt="..." class="img-rounded">
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                      <button type="button" class="btn btn-default">1</button>
+                      <button type="button" class="btn btn-default">2</button>
+                    </div>
+                </div> 				
+			</div>
+			
+		</div>
+
+	</div>
+</body>
+</html>

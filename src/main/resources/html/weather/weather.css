@@ -1,0 +1,117 @@
+html, body, #map-canvas {
+    height: 100%;
+    width: : 100%;
+    overflow: hidden;
+    font-size: 4vw;
+    background-color: black;
+    color: white;
+    /*
+        background: #1E1E1E;
+        color: #f9f9f9;
+        */
+}
+
+#address {
+	font-size: 3vw;
+}
+
+.form-control {
+	height: auto;
+}
+
+.container-fluid, .panel {
+    height: 100%;
+    padding: 0px;
+}
+
+.table, .table .table {
+    height: 90%;
+    margin-bottom: 0px;
+    background: inherit; 
+    
+}
+
+.panel {
+    background: inherit; 
+}
+
+.panel>.table-responsive {
+    height: 100%;
+}
+
+.table>tbody>tr>td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+}
+
+ul {
+    margin: 0px;
+}
+
+.table  .table  tr {
+    margin: 2px;
+}
+
+td>img {
+    /*width  : 80%;*/
+    height: auto !important;
+    width : 50% !important;
+}
+.topimg {
+    padding-top: 20px;
+}
+
+.width33 {
+    width: 33%;
+}
+
+h3 {
+   text-align: center;
+   font-size : 5vw ! important;
+}
+
+h4 {
+   text-align: center;
+   font-size : 4vw ! important;
+}
+.btn-group  {
+   padding: 5px;
+   text-align: center ! important;
+   width : 100%
+}
+
+.btn-group > button {
+    margin-top   : 10px;
+    margin-right  : 10px;
+    margin-bottom: 10px;
+    border-radius: 10px !important;
+    padding : 5px;
+    font-size: 4vw;
+}
+.nav {
+	font-size: 3vw;
+}
+
+
+
+
+.vmiddle {
+    vertical-align: middle !important;
+    height: 80%;
+}
+
+#address {
+    font-size: 3vw;
+}
+
+#home{
+	height : 90%;
+}
+
+.width25{
+    width: 25%
+}
+
+
+

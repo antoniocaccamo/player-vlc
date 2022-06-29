@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>GMAP</title>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="../libs/bootstrap/3.3.6/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="../libs/bootstrap/3.3.6/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../libs/bootstrap/3.3.6/bootstrap.min.js"></script>
+
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+
+<script src="../libs/underscore/1.8.3/underscore-min.js"></script>
+
+<script	src="../libs/jquery/plugins/purl.js"></script>
+
+<script src="../libs/player.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="weather.css">
+
+<script type="text/javascript">
+	
+	var mylatlng;
+	var mylang  ;
+	
+	var coords;
+	var latlng;
+
+	$(document).ready(function() {
+		
+		Player.weather.template = 0;      
+		
+		mylatlng = $.url().param("latlng");
+		
+		var ll = mylatlng.split(",");
+		Player.weather.setCoordinates( ll[0], ll[1] );
+		mylang = $.url().param("lang");
+		if ( mylang == null || '' == mylang || Player.weather.labels[mylang] == null) {
+			mylang = 'en';	
+		}
+		Player.weather.lang = mylang;
+		$('#lbl_lat').text(Player.weather.labels[Player.weather.lang].latitude);
+		$('#lbl_lng').text(Player.weather.labels[Player.weather.lang].longitude);
+		$('#lbl_address').text(Player.weather.labels[Player.weather.lang].address);
+		$('#address').attr('placeholder', Player.weather.labels[Player.weather.lang].address_placeholder);
+		$('#lbl_home').text(Player.weather.labels[Player.weather.lang].home);
+		$('#lbl_preview').text(Player.weather.labels[Player.weather.lang].preview);
+		var mapOptions = {
+			zoom : 8,
+			center : Player.weather.latlng,
+			mapTypeControl: true,
+		    mapTypeControlOptions: {
+		      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+		      mapTypeIds: [
+		        google.maps.MapTypeId.ROADMAP,
+		        google.maps.MapTypeId.TERRAIN
+		      ]
+		    },
+		    zoomControl: true,
+		    zoomControlOptions: {
+		        position: google.maps.ControlPosition.RIGHT_TOP
+		    }
+		};
+
+		var mapDiv = document.getElementById('map-canvas');
+
+		Player.weather.map = new google.maps.Map(mapDiv, mapOptions);
+
+		Player.weather.geocode();
+
+		Player.weather.map.addListener('click', function() {
+			Player.weather.geocode();
+		});
+		
+		$('#address').keypress(function( event ) {
+			  if (  event.which == 13 ) {
+				  event.preventDefault();
+				  Player.weather.geocodeAddress( $('#address').val() );
+				}
+		});
+		 
+		
+	});
+	
+
+	function getCoords() {
+        return  Player.weather.latlngToQuery() ; 
+    }
+	
+	function showMap() {
+		$('#map-canvas').show();
+		$('#weather_table').hide(); 
+		
+	}
+	
+	function showPreview() {
+		$('#map-canvas').hide();
+		$('#weather_table').show();
+		Player.weather.wwo.refresh(); 
+		
+    }
+	
+</script>
+
+</head>
+<body>
+	<div class="container-fluid">
+
+				<table class="table">
+					<tr>
+						<td class="bg-primary width25" id="lbl_lat"></td>
+
+						<td class="width25" id="lat"></td>
+
+						<td class="bg-primary width25" id="lbl_lng"></td>
+
+						<td class="width25" id="lng"></td>
+					</tr>
+					
+					<tr>
+					   <td class="bg-primary width25" id="lbl_address"></td>
+
+                        <td colspan="3" >
+                        	<input id="address" type="text" class="form-control"  aria-describedby="basic-addon1">
+                        </td>
+					</tr>
+					
+					<tr>
+						<td colspan="4">
+						
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a data-toggle="pill" href="#home"    onclick="showMap();" id="lbl_home"></a>
+								</li>
+								<li>
+									<a data-toggle="pill" href="#preview" onclick="showPreview();" id="lbl_preview">Anteprima</a>
+								</li>    
+							</ul>
+							
+							<div class="tab-content">
+								
+								<div id="home" class="tab-pane fade in active">
+								  <div id="map-canvas" style="min-width:400px;min-height:200px;"></div>
+								</div>
+								
+								<div id="preview" class="tab-pane fade" style="min-height: 300px">
+									<div class="container-fluid vmiddle" id="weather_table">
+	
+								        <div class="row vmiddle" id="weather_forecast">            
+								        </div>
+								        
+									</div>
+								</div>
+							
+							</div>
+						
+						</td>
+					</tr>
+					
+				</table>
+		
+	</div>
+	
+	
+	
+</body>
+</html>

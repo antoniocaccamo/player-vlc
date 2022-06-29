@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>WEATHER 2</title>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script	src="../libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="../libs/bootstrap/3.3.6/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="../libs/bootstrap/3.3.6/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script	src="../libs/bootstrap/3.3.6/bootstrap.min.js"></script>
+
+
+<script src="../libs/underscore/1.8.3/underscore-min.js"></script>
+
+<script	src="../libs/jquery/plugins/purl.js"></script>
+<script	src="../libs/jquery/plugins/jquery.timer.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="../libs/player.js"></script>
+
+<link rel="stylesheet" href="weather.css">
+
+<script type="text/javascript">
+
+$(document).ready(function() {  
+        Player.weather.template = 0;
+        var ll = $.url().param("latlng").split(",");
+        var lang = $.url().param("lang");
+        if ( lang == null || '' == lang || Player.weather.labels[lang] == null ) {
+			lang = 'en';	
+		}
+		Player.weather.lang= lang;
+        Player.weather.setCoordinates( ll[0], ll[1] );
+        Player.weather.wwo.refresh();
+        var timer = $.timer( Player.weather.wwo.refresh );
+        timer.set({ time : 10800000 , autostart : true });        
+	});	
+</script>		
+
+</head>
+<body>
+	<div class="container-fluid vmiddle" id="weather_table">
+	
+        <div class="row vmiddle" id="weather_forecast">            
+        </div>
+        
+	</div>
+	
+</body>
+</html>
+
